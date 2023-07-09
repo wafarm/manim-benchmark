@@ -1,0 +1,43 @@
+name: Benchmark
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: 'Target repository to benchmark'
+        required: true
+        type: string
+      branch:
+        description: 'Target branch to benchmark'
+        required: true
+        type: string
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.inputs.repository }}
+          ref: ${{ github.event.inputs.branch }}
+          path: current
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - uses: Gr1N/setup-poetry@v8
+
+      - run: pip install manim
+      - run: python test.py
+      - run: python collect.py baseline
+
+      - run: bash init_current.sh
+      - run: python test.py
+      - run: python collect.py current
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: result
+          path: result
+      - uses: actions/upload-artifact@v3
+        with:
+          name: videos
+          path: videos
