@@ -14,8 +14,7 @@ testcases = os.listdir("output")
 for testcase in testcases:
     shutil.copy(f"output/{testcase}", f"result/{data_type}/{testcase}")
 
-os.mkdir("videos")
-os.mkdir(f"videos/{data_type}")
+os.makedirs(f"videos/{data_type}", exist_ok=True)
 
 videos = os.listdir("media/videos/720p30")
 for video in videos:
