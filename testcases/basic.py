@@ -184,16 +184,27 @@ class LineJoints(Scene):
 with tempconfig({"quality": "medium_quality", "disable_caching": True}):
     scene = OpeningManim()
     scene.render()
+
+with tempconfig({"quality": "medium_quality", "disable_caching": True}):
     scene = SquareToCircle()
     scene.render()
+
+with tempconfig({"quality": "medium_quality", "disable_caching": True}):
     scene = WarpSquare()
     scene.render()
+
+with tempconfig({"quality": "medium_quality", "disable_caching": True}):
     scene = WriteStuff()
     scene.render()
+
+with tempconfig({"quality": "medium_quality", "disable_caching": True}):
     scene = UpdatersExample()
     scene.render()
+
+with tempconfig({"quality": "medium_quality", "disable_caching": True}):
     scene = SpiralInExample()
     scene.render()
+
     # Disable LineJoints because it may not be able to run
     # scene = LineJoints()
     # scene.render()
