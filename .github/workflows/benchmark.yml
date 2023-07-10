@@ -24,6 +24,9 @@ jobs:
         with:
           python-version: '3.11'
       - uses: Gr1N/setup-poetry@v8
+      - run: sudo apt update
+      - run: sudo apt install libcairo2-dev libpango1.0-dev ffmpeg
+      - run: sudo apt install texlive texlive-latex-extra
 
       - run: pip install manim
       - run: python test.py
