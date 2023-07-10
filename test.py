@@ -14,4 +14,5 @@ for file in testcases:
     filename_without_extension = file.split(".")[0]
     file = "testcases/" + file
     output = "output/" + filename_without_extension + ".txt"
-    subprocess.run(["python", "-m", "cProfile", "-o", output, file])
+    process = subprocess.Popen(["python", "-m", "cProfile", "-o", output, file])
+    process.wait()
